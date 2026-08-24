@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vispar-tech.github.io/sitemap-index.xml
