@@ -6,6 +6,8 @@ export interface NavContent {
   projects: string;
   stack: string;
   contacts: string;
+  /** mobile menu toggle label */
+  menu: string;
 }
 
 export interface HeroContent {
@@ -48,6 +50,8 @@ export interface SiteContent {
   locale: Locale;
   meta: { title: string; description: string };
   nav: NavContent;
+  /** accessibility strings */
+  a11y: { skipToContent: string };
   hero: HeroContent;
   about: {
     heading: string;
