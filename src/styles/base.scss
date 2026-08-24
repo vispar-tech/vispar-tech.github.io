@@ -101,6 +101,19 @@ main > section + section {
   margin-top: var(--section-gap);
 }
 
+// shell-style section headings across every section
+main h2 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+
+  &::before {
+    content: "$ ";
+    color: var(--accent);
+    font-weight: 500;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

@@ -21,7 +21,6 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
     />
     <p class="hero__prompt">{content.hero.prompt}</p>
     <h1 class="hero__name">{content.hero.name}</h1>
-    <!-- TODO(T03): rotating typing effect over content.hero.roles; static first role for now -->
     <p class="hero__role">
       <span class="sr-only">{content.hero.roles.join(", ")}</span>
       <span class="hero__role-animated" data-roles={JSON.stringify(content.hero.roles)} aria-hidden="true"><span class="hero__role-text">{content.hero.roles[0]}</span><span class="hero__cursor">_</span></span>
@@ -86,6 +85,11 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
     &__location {
       color: var(--text-muted);
       font-size: 0.95rem;
+      font-family: var(--font-mono);
+
+      &::before {
+        content: "// ";
+      }
     }
 
     &__cta {
@@ -99,6 +103,7 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
       background: var(--element);
       border-radius: var(--radius-md);
       padding: 0.65rem 1.4rem;
+      font-family: var(--font-mono);
       transition:
         background-color 0.15s ease,
         border-color 0.15s ease,
