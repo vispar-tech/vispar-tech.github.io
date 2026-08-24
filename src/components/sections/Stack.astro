@@ -65,13 +65,29 @@ const { stack } = content;
           font-family: var(--font-mono);
           font-size: 0.85rem;
           color: var(--text-secondary);
-          border: 1px solid var(--border);
-          border-radius: var(--radius-sm);
-          padding: 0.25rem 0.6rem;
+          padding: 0.1rem 0;
+          transition: color 0.15s ease;
+
+          &::before,
+          &::after {
+            color: var(--text-muted);
+          }
+
+          &::before {
+            content: "[";
+          }
+
+          &::after {
+            content: "]";
+          }
 
           &:hover {
             color: var(--accent);
-            border-color: var(--accent);
+
+            &::before,
+            &::after {
+              color: var(--accent);
+            }
           }
         }
       }
