@@ -1,0 +1,123 @@
+---
+import { withGithubStars } from "@/lib/github";
+import type { SiteContent } from "@/content/types";
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+const projects = await withGithubStars(content.projects.items);
+---
+
+<section id="projects" class="projects">
+  <div class="container">
+    <h2>{content.projects.heading}</h2>
+    <p class="projects__subtitle">{content.projects.subtitle}</p>
+    <!-- TODO(T06): language dot colors, richer repo metadata -->
+    <div class="projects__grid">
+      {projects.map((project) => (
+        <a class="project" href={project.url} rel="noopener">
+          <header class="project__header">
+            <h3>{project.name}</h3>
+            <span class="project__meta">
+              {project.language && <span class="project__lang">{project.language}</span>}
+              {typeof project.stars === "number" && (
+                <span class="project__stars">★ {project.stars}</span>
+              )}
+            </span>
+          </header>
+          <p>{project.description}</p>
+        </a>
+      ))}
+    </div>
+    <a class="projects__view-all" href={content.projects.viewAllUrl} rel="noopener">
+      {content.projects.viewAllLabel} →
+    </a>
+  </div>
+</section>
+
+<style lang="scss">
+  .projects {
+    h2 {
+      margin-bottom: 0.5rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    &__subtitle {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+      gap: 1rem;
+    }
+
+    &__view-all {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-family: var(--font-mono);
+      color: var(--accent);
+
+      &:hover {
+        color: var(--accent-hover);
+      }
+    }
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--element);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease,
+      transform 0.15s ease;
+
+    &:hover {
+      border-color: var(--accent);
+      background: var(--element-hover);
+      transform: translateY(-2px);
+
+      h3 {
+        color: var(--accent);
+      }
+    }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    h3 {
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+    }
+
+    &__meta {
+      display: flex;
+      gap: 0.75rem;
+      white-space: nowrap;
+    }
+
+    &__lang,
+    &__stars {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+  }
+</style>

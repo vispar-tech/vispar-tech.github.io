@@ -1,0 +1,131 @@
+---
+import type { SiteContent } from "@/content/types";
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+const { experience } = content;
+---
+
+<section id="experience" class="experience">
+  <div class="container">
+    <h2>{experience.heading}</h2>
+    <ol class="experience__list">
+      {experience.items.map((job) => (
+        <li class="job">
+          <header class="job__header">
+            <div>
+              <h3 class="job__company">
+                {job.link ? <a href={job.link} rel="noopener">{job.company}</a> : job.company}
+              </h3>
+              <p class="job__role">{job.role}</p>
+            </div>
+            <p class="job__period">{job.period}</p>
+          </header>
+          <p class="job__summary">{job.summary}</p>
+          <ul class="job__points">
+            {job.points.map((point) => <li>{point}</li>)}
+          </ul>
+          <ul class="job__stack">
+            {job.stack.map((tech) => <li>{tech}</li>)}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style lang="scss">
+  .experience {
+    h2 {
+      margin-bottom: 1.5rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    &__list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+  }
+
+  .job {
+    background: var(--element);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.25rem, 3vw, 2rem);
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    &__company {
+      font-size: 1.2rem;
+
+      a:hover {
+        color: var(--accent);
+      }
+    }
+
+    &__role {
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+    }
+
+    &__period {
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    &__summary {
+      color: var(--text-secondary);
+      margin-bottom: 0.9rem;
+    }
+
+    &__points {
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+
+      li {
+        color: var(--text-secondary);
+
+        &::marker {
+          color: var(--accent);
+        }
+      }
+    }
+
+    &__stack {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+
+      li {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        background: var(--neutral-800);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.2rem 0.55rem;
+      }
+    }
+  }
+</style>

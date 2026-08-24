@@ -1,0 +1,74 @@
+---
+import type { SiteContent } from "@/content/types";
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+const { about } = content;
+---
+
+<section id="about" class="about">
+  <div class="container">
+    <h2>{about.heading}</h2>
+    <div class="about__body">
+      {about.paragraphs.map((p) => <p>{p}</p>)}
+    </div>
+    <ul class="about__stats">
+      {about.stats.map((stat) => (
+        <li>
+          <span class="about__stat-value">{stat.value}</span>
+          <span class="about__stat-label">{stat.label}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style lang="scss">
+  .about {
+    h2 {
+      margin-bottom: 1.5rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    &__body {
+      max-width: 46rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+
+      p {
+        color: var(--text-secondary);
+      }
+    }
+
+    &__stats {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      padding: 0;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+
+      li {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+      }
+    }
+
+    &__stat-value {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    &__stat-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  }
+</style>

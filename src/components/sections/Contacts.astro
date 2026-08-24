@@ -1,0 +1,83 @@
+---
+import type { SiteContent } from "@/content/types";
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+const { contacts } = content;
+---
+
+<section id="contacts" class="contacts">
+  <div class="container">
+    <h2>{contacts.heading}</h2>
+    <p class="contacts__text">{contacts.text}</p>
+    <div class="contacts__links">
+      <a class="contacts__card" href={contacts.telegramUrl} rel="me noopener">
+        <span class="contacts__label">Telegram</span>
+        <span class="contacts__value">{contacts.telegramLabel}</span>
+      </a>
+      <a class="contacts__card" href={contacts.githubUrl} rel="me noopener">
+        <span class="contacts__label">GitHub</span>
+        <span class="contacts__value">{contacts.githubLabel}</span>
+      </a>
+      <a class="contacts__card" href={`mailto:${contacts.email}`}>
+        <span class="contacts__label">Email</span>
+        <span class="contacts__value">{contacts.email}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .contacts {
+    h2 {
+      margin-bottom: 0.75rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    &__text {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      max-width: 36rem;
+    }
+
+    &__links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+      gap: 1rem;
+    }
+
+    &__card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      background: var(--element);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.25rem;
+      transition:
+        border-color 0.15s ease,
+        background-color 0.15s ease;
+
+      &:hover {
+        border-color: var(--accent);
+        background: var(--element-hover);
+      }
+    }
+
+    &__label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    &__value {
+      color: var(--text);
+      overflow-wrap: anywhere;
+    }
+  }
+</style>
