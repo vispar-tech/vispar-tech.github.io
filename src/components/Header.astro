@@ -55,7 +55,7 @@ const navLinks = [
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba(25, 25, 25, 0.85);
+    background: rgba(16, 16, 16, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
 
@@ -89,8 +89,14 @@ const navLinks = [
 
       a {
         color: var(--text-secondary);
-        font-size: 0.95rem;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
         transition: color 0.15s ease;
+
+        &::before {
+          content: "./";
+          color: var(--text-muted);
+        }
 
         &:hover {
           color: var(--text);

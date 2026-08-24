@@ -26,6 +26,26 @@ const ru: SiteContent = {
     photoAlt: "Фото Даниила Павловича",
     ctaPrimary: { label: "Проекты", href: "#projects" },
     ctaSecondary: { label: "Связаться", href: "#contacts" },
+    terminal: {
+      title: "vispar@spb: ~",
+      lines: [
+        {
+          cmd: "ls ~/stack",
+          output: ["python/  rust/  typescript/  fastapi/  postgres/"],
+        },
+        {
+          cmd: "cat experience.log",
+          output: [
+            "justdo — crm + wms для wb и ozon (2021—2023)",
+            "j-crypto — платформа алготрейдинга (2023—2026)",
+          ],
+        },
+        {
+          cmd: "open contacts --fast",
+          output: ["tg @vispar_work · gh vispar-tech · spb utc+3"],
+        },
+      ],
+    },
   },
   about: {
     heading: "Обо мне",
@@ -158,6 +178,8 @@ const ru: SiteContent = {
     githubUrl: "https://github.com/vispar-tech",
     githubLabel: "github.com/vispar-tech",
     email: "layred.dota2@mail.ru",
+    copyLabel: "[копировать]",
+    copiedLabel: "[скопировано ✓]",
     footerNote: "Санкт-Петербург · UTC+3",
   },
 };

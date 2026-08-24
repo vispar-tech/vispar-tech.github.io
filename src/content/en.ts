@@ -26,6 +26,26 @@ const en: SiteContent = {
     photoAlt: "Photo of Daniil Pavlovich",
     ctaPrimary: { label: "Projects", href: "#projects" },
     ctaSecondary: { label: "Contact", href: "#contacts" },
+    terminal: {
+      title: "vispar@spb: ~",
+      lines: [
+        {
+          cmd: "ls ~/stack",
+          output: ["python/  rust/  typescript/  fastapi/  postgres/"],
+        },
+        {
+          cmd: "cat experience.log",
+          output: [
+            "justdo — crm + wms for wb & ozon (2021—2023)",
+            "j-crypto — algo trading platform (2023—2026)",
+          ],
+        },
+        {
+          cmd: "open contacts --fast",
+          output: ["tg @vispar_work · gh vispar-tech · spb utc+3"],
+        },
+      ],
+    },
   },
   about: {
     heading: "About me",
@@ -158,6 +178,8 @@ const en: SiteContent = {
     githubUrl: "https://github.com/vispar-tech",
     githubLabel: "github.com/vispar-tech",
     email: "layred.dota2@mail.ru",
+    copyLabel: "[copy]",
+    copiedLabel: "[copied ✓]",
     footerNote: "Saint Petersburg · UTC+3",
   },
 };

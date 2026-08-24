@@ -11,28 +11,53 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
 
 <section id="hero" class="hero">
   <div class="container hero__inner">
-    <img
-      class="hero__photo"
-      src={avatar}
-      alt={content.hero.photoAlt}
-      width="128"
-      height="128"
-      loading="eager"
-    />
-    <p class="hero__prompt">{content.hero.prompt}</p>
-    <h1 class="hero__name">{content.hero.name}</h1>
-    <p class="hero__role">
-      <span class="sr-only">{content.hero.roles.join(", ")}</span>
-      <span class="hero__role-animated" data-roles={JSON.stringify(content.hero.roles)} aria-hidden="true"><span class="hero__role-text">{content.hero.roles[0]}</span><span class="hero__cursor">_</span></span>
-    </p>
-    <p class="hero__location">{content.hero.location}</p>
-    <div class="hero__cta">
-      <a class="hero__btn hero__btn--primary" href={content.hero.ctaPrimary.href}>
-        {content.hero.ctaPrimary.label}
-      </a>
-      <a class="hero__btn" href={content.hero.ctaSecondary.href}>
-        {content.hero.ctaSecondary.label}
-      </a>
+    <div class="hero__intro">
+      <img
+        class="hero__photo"
+        src={avatar}
+        alt={content.hero.photoAlt}
+        width="128"
+        height="128"
+        loading="eager"
+      />
+      <p class="hero__prompt">{content.hero.prompt}</p>
+      <h1 class="hero__name">{content.hero.name}</h1>
+      <p class="hero__role">
+        <span class="sr-only">{content.hero.roles.join(", ")}</span>
+        <span class="hero__role-animated" data-roles={JSON.stringify(content.hero.roles)} aria-hidden="true"><span class="hero__role-text">{content.hero.roles[0]}</span><span class="hero__cursor">_</span></span>
+      </p>
+      <p class="hero__location">{content.hero.location}</p>
+      <div class="hero__cta">
+        <a class="hero__btn hero__btn--primary" href={content.hero.ctaPrimary.href}>
+          {content.hero.ctaPrimary.label}
+        </a>
+        <a class="hero__btn" href={content.hero.ctaSecondary.href}>
+          {content.hero.ctaSecondary.label}
+        </a>
+      </div>
+    </div>
+    <div class="term">
+      <div class="term__bar" aria-hidden="true">
+        <span class="term__dot"></span>
+        <span class="term__dot"></span>
+        <span class="term__dot"></span>
+        <span class="term__title">{content.hero.terminal.title}</span>
+      </div>
+      <div class="term__body">
+        {content.hero.terminal.lines.map((line) => (
+          <div class="term__group">
+            <p class="term__cmd">
+              <span class="term__ps1" aria-hidden="true">$</span>
+              <span class="term__cmd-text">{line.cmd}</span>
+            </p>
+            {line.output.map((out) => <p class="term__out">{out}</p>)}
+          </div>
+        ))}
+        <span class="term__cursor" aria-hidden="true">▍</span>
+      </div>
+      <p class="sr-only">
+        {content.hero.terminal.lines.map((l) => `$ ${l.cmd}: ${l.output.join("; ")}`).join(". ")}
+      </p>
     </div>
   </div>
 </section>
@@ -42,6 +67,18 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
     padding-block: clamp(3rem, 12vh, 7rem);
 
     &__inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2.5rem;
+
+      @media (min-width: 960px) {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        align-items: center;
+        gap: 3.5rem;
+      }
+    }
+
+    &__intro {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -107,26 +144,100 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
       transition:
         background-color 0.15s ease,
         border-color 0.15s ease,
+        color 0.15s ease,
         transform 0.15s ease;
 
       &:hover {
         background: var(--element-hover);
-        border-color: var(--accent);
+        border-color: var(--neutral-600);
         color: var(--text);
         transform: translateY(-2px);
       }
 
       &--primary {
-        background: var(--accent);
+        background: transparent;
         border-color: var(--accent);
-        color: #191919;
+        color: var(--accent);
         font-weight: 600;
 
         &:hover {
-          background: var(--accent-hover);
-          border-color: var(--accent-hover);
-          color: #191919;
+          background: var(--accent);
+          border-color: var(--accent);
+          color: #101010;
         }
+      }
+    }
+  }
+
+  // ── terminal window ─────────────────────────────────────────
+  .term {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    font-family: var(--font-mono);
+
+    &__bar {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--element);
+    }
+
+    &__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--neutral-700);
+
+      &:nth-child(1) {
+        background: var(--neutral-600);
+      }
+    }
+
+    &__title {
+      margin-inline: auto;
+      padding-right: 2.2rem; // optically recenters past the dots
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    &__body {
+      padding: 1rem 1.15rem 1.1rem;
+      font-size: 0.85rem;
+      line-height: 1.75;
+      min-height: 15.5em;
+    }
+
+    &__group {
+      margin-bottom: 0.35rem;
+    }
+
+    &__cmd {
+      display: flex;
+      gap: 0.7em;
+    }
+
+    &__ps1 {
+      color: var(--accent); // the one deliberate splash of orange
+      user-select: none;
+    }
+
+    &__out {
+      color: var(--text-secondary);
+      padding-left: calc(1ch + 0.7em);
+    }
+
+    &__cursor {
+      display: inline-block;
+      width: 0.55em;
+      color: var(--accent);
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: cursor-blink 1s steps(2, start) infinite;
       }
     }
   }
@@ -139,6 +250,9 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
 </style>
 
 <script>
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+  // rotating roles
   const animated = document.querySelector<HTMLElement>(".hero__role-animated");
   const textEl = document.querySelector<HTMLElement>(".hero__role-text");
 
@@ -148,7 +262,6 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
       const typeMs = 65;
       const deleteMs = 30;
       const holdMs = 2000;
-      const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
       (async () => {
         let index = 0;
@@ -166,5 +279,47 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
         }
       })();
     }
+  }
+
+  // terminal session replay
+  const term = document.querySelector<HTMLElement>(".term");
+
+  if (term && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const groups = [...term.querySelectorAll<HTMLElement>(".term__group")];
+    const cursor = term.querySelector<HTMLElement>(".term__cursor");
+
+    // hide the server-rendered session, then play it back
+    for (const g of groups) {
+      g.style.visibility = "hidden";
+      for (const out of g.querySelectorAll<HTMLElement>(".term__out")) {
+        out.style.visibility = "hidden";
+      }
+    }
+    if (cursor) cursor.style.visibility = "hidden";
+
+    (async () => {
+      await sleep(600);
+      for (const g of groups) {
+        g.style.visibility = "visible";
+        const cmdText = g.querySelector<HTMLElement>(".term__cmd-text");
+        const outs = [...g.querySelectorAll<HTMLElement>(".term__out")];
+
+        if (cmdText) {
+          const full = cmdText.textContent ?? "";
+          cmdText.textContent = "";
+          for (const ch of full) {
+            cmdText.textContent += ch;
+            await sleep(38);
+          }
+        }
+        await sleep(160);
+        for (const out of outs) {
+          out.style.visibility = "visible";
+          await sleep(110);
+        }
+        await sleep(420);
+      }
+      if (cursor) cursor.style.visibility = "visible";
+    })();
   }
 </script>
