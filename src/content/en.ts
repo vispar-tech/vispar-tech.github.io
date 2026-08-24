@@ -13,6 +13,10 @@ const en: SiteContent = {
     projects: "Projects",
     stack: "Stack",
     contacts: "Contacts",
+    menu: "Menu",
+  },
+  a11y: {
+    skipToContent: "Skip to content",
   },
   hero: {
     prompt: "$ whoami",

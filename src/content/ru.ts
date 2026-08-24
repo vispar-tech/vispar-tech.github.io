@@ -13,6 +13,10 @@ const ru: SiteContent = {
     projects: "Проекты",
     stack: "Стек",
     contacts: "Контакты",
+    menu: "Меню",
+  },
+  a11y: {
+    skipToContent: "Перейти к содержимому",
   },
   hero: {
     prompt: "$ whoami",

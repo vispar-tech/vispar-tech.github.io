@@ -49,8 +49,9 @@ const enUrl = new URL("/en/", site);
     <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
+    <a class="skip-link" href="#main">{content.a11y.skipToContent}</a>
     <Header content={content} altLocalePath={altLocalePath} />
-    <main>
+    <main id="main">
       <slot />
     </main>
     <Footer content={content} />
