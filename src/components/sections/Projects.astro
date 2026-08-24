@@ -14,14 +14,18 @@ const projects = await withGithubStars(content.projects.items);
   <div class="container">
     <h2>{content.projects.heading}</h2>
     <p class="projects__subtitle">{content.projects.subtitle}</p>
-    <!-- TODO(T06): language dot colors, richer repo metadata -->
     <div class="projects__grid">
       {projects.map((project) => (
         <a class="project" href={project.url} rel="noopener">
           <header class="project__header">
             <h3>{project.name}</h3>
             <span class="project__meta">
-              {project.language && <span class="project__lang">{project.language}</span>}
+              {project.language && (
+                <span class="project__lang">
+                  <span class={`project__lang-dot project__lang-dot--${project.language.toLowerCase()}`} />
+                  {project.language}
+                </span>
+              )}
               {typeof project.stars === "number" && (
                 <span class="project__stars">★ {project.stars}</span>
               )}
@@ -80,10 +84,15 @@ const projects = await withGithubStars(content.projects.items);
       background-color 0.15s ease,
       transform 0.15s ease;
 
+    @media (prefers-reduced-motion: no-preference) {
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+
     &:hover {
       border-color: var(--accent);
       background: var(--element-hover);
-      transform: translateY(-2px);
 
       h3 {
         color: var(--accent);
@@ -106,6 +115,30 @@ const projects = await withGithubStars(content.projects.items);
       display: flex;
       gap: 0.75rem;
       white-space: nowrap;
+    }
+
+    &__lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    &__lang-dot {
+      width: 0.6em;
+      height: 0.6em;
+      border-radius: 50%;
+
+      &--python {
+        background: var(--lang-python);
+      }
+
+      &--rust {
+        background: var(--lang-rust);
+      }
+
+      &--typescript {
+        background: var(--lang-typescript);
+      }
     }
 
     &__lang,
