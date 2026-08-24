@@ -22,7 +22,10 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
     <p class="hero__prompt">{content.hero.prompt}</p>
     <h1 class="hero__name">{content.hero.name}</h1>
     <!-- TODO(T03): rotating typing effect over content.hero.roles; static first role for now -->
-    <p class="hero__role">{content.hero.roles[0]}</p>
+    <p class="hero__role">
+      <span class="sr-only">{content.hero.roles.join(", ")}</span>
+      <span class="hero__role-animated" data-roles={JSON.stringify(content.hero.roles)} aria-hidden="true"><span class="hero__role-text">{content.hero.roles[0]}</span><span class="hero__cursor">_</span></span>
+    </p>
     <p class="hero__location">{content.hero.location}</p>
     <div class="hero__cta">
       <a class="hero__btn hero__btn--primary" href={content.hero.ctaPrimary.href}>
@@ -69,6 +72,15 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
       font-family: var(--font-mono);
       font-size: 1.15rem;
       color: var(--text-secondary);
+      min-height: 1.5em;
+    }
+
+    &__cursor {
+      color: var(--accent);
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: cursor-blink 1s steps(2, start) infinite;
+      }
     }
 
     &__location {
@@ -113,4 +125,41 @@ const avatar = "https://avatars.githubusercontent.com/u/85240536?v=4&s=256";
       }
     }
   }
+
+  @keyframes cursor-blink {
+    to {
+      visibility: hidden;
+    }
+  }
 </style>
+
+<script>
+  const animated = document.querySelector<HTMLElement>(".hero__role-animated");
+  const textEl = document.querySelector<HTMLElement>(".hero__role-text");
+
+  if (animated && textEl && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const roles: string[] = JSON.parse(animated.dataset.roles ?? "[]");
+    if (roles.length > 1) {
+      const typeMs = 65;
+      const deleteMs = 30;
+      const holdMs = 2000;
+      const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+      (async () => {
+        let index = 0;
+        for (;;) {
+          await sleep(holdMs);
+          while ((textEl.textContent?.length ?? 0) > 0) {
+            textEl.textContent = textEl.textContent!.slice(0, -1);
+            await sleep(deleteMs);
+          }
+          index = (index + 1) % roles.length;
+          for (const ch of roles[index]) {
+            textEl.textContent += ch;
+            await sleep(typeMs);
+          }
+        }
+      })();
+    }
+  }
+</script>
