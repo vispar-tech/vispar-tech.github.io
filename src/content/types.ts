@@ -20,6 +20,11 @@ export interface HeroContent {
   photoAlt: string;
   ctaPrimary: { label: string; href: string };
   ctaSecondary: { label: string; href: string };
+  /** fake terminal session rendered as an interactive window */
+  terminal: {
+    title: string;
+    lines: { cmd: string; output: string[] }[];
+  };
 }
 
 export interface ExperienceItem {
@@ -75,6 +80,9 @@ export interface SiteContent {
     githubUrl: string;
     githubLabel: string;
     email: string;
+    /** copy-to-clipboard affordances for the email card */
+    copyLabel: string;
+    copiedLabel: string;
     footerNote: string;
   };
 }

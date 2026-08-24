@@ -1,12 +1,13 @@
 // Design tokens — single source of truth for the visual language.
-// Palette reference: ziit.app + neutrals sampled from the GitHub avatar.
+// Palette reference: ziit.app pushed darker toward opencode.ai; neutrals from the GitHub avatar.
 // Component styles must use these variables, never hardcode colors/fonts/sizes.
 
 :root {
   // palette
-  --background: #191919;
-  --element: #2b2b2b;
-  --element-hover: #333333;
+  --background: #101010;
+  --element: #1a1a1a;
+  --element-hover: #242424;
+  --panel: #0c0c0c;
   --border: rgba(255, 255, 255, 0.1);
   --accent: #ff6200;
   --accent-hover: #ff7a24;
