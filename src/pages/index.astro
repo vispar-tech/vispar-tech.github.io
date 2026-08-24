@@ -1,0 +1,19 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/sections/Hero.astro";
+import About from "@/components/sections/About.astro";
+import Experience from "@/components/sections/Experience.astro";
+import Projects from "@/components/sections/Projects.astro";
+import Stack from "@/components/sections/Stack.astro";
+import Contacts from "@/components/sections/Contacts.astro";
+import content from "@/content/ru";
+---
+
+<Layout content={content} canonicalPath="/" altLocalePath="/en/">
+  <Hero content={content} />
+  <About content={content} />
+  <Experience content={content} />
+  <Projects content={content} />
+  <Stack content={content} />
+  <Contacts content={content} />
+</Layout>

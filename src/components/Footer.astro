@@ -1,0 +1,63 @@
+---
+import type { SiteContent } from "@/content/types";
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__note">
+      © {year} {content.hero.name} · <span class="site-footer__location">{content.contacts.footerNote}</span>
+    </p>
+    <nav class="site-footer__links" aria-label="Contacts">
+      <a href={content.contacts.telegramUrl} rel="me noopener">Telegram</a>
+      <a href={content.contacts.githubUrl} rel="me noopener">GitHub</a>
+      <a href={`mailto:${content.contacts.email}`}>Email</a>
+      <a href={`/${content.locale === "ru" ? "en/" : ""}`} class="site-footer__repo">vispar-tech.github.io</a>
+    </nav>
+  </div>
+</footer>
+
+<style lang="scss">
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding-block: 1.5rem;
+    margin-top: var(--section-gap);
+
+    &__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    &__note {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+
+      .site-footer__location {
+        font-family: var(--font-mono);
+      }
+    }
+
+    &__links {
+      display: flex;
+      gap: 1.25rem;
+
+      a {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+
+        &:hover {
+          color: var(--accent);
+        }
+      }
+    }
+  }
+</style>

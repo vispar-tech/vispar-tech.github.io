@@ -1,0 +1,58 @@
+---
+import "@fontsource-variable/outfit";
+import "@fontsource-variable/chivo-mono";
+import "@/styles/tokens.scss";
+import "@/styles/base.scss";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import type { SiteContent } from "@/content/types";
+
+interface Props {
+  content: SiteContent;
+  /** path of the current page relative to the site root, e.g. "/" or "/en/" */
+  canonicalPath: string;
+  /** path of the same page in the other locale */
+  altLocalePath: string;
+}
+
+const { content, canonicalPath, altLocalePath } = Astro.props;
+const site = Astro.site ?? new URL("https://vispar-tech.github.io");
+const canonical = new URL(canonicalPath, site);
+const ogImage = new URL("/og.png", site);
+const ruUrl = new URL("/", site);
+const enUrl = new URL("/en/", site);
+---
+
+<!doctype html>
+<html lang={content.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{content.meta.title}</title>
+    <meta name="description" content={content.meta.description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#191919" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="alternate" hreflang="ru" href={ruUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={ruUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={content.meta.title} />
+    <meta property="og:description" content={content.meta.description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={content.locale === "ru" ? "ru_RU" : "en_US"} />
+    <meta property="og:site_name" content={content.hero.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <Header content={content} altLocalePath={altLocalePath} />
+    <main>
+      <slot />
+    </main>
+    <Footer content={content} />
+  </body>
+</html>

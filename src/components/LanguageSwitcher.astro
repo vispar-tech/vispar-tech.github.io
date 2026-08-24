@@ -1,0 +1,37 @@
+---
+interface Props {
+  currentLocale: "ru" | "en";
+  altLocalePath: string;
+}
+
+const { currentLocale, altLocalePath } = Astro.props;
+const label = currentLocale === "ru" ? "EN" : "RU";
+---
+
+<a
+  class="lang-switcher"
+  href={altLocalePath}
+  aria-label={currentLocale === "ru" ? "Switch to English" : "Переключить на русский"}
+  lang={currentLocale === "ru" ? "en" : "ru"}
+>
+  {label}
+</a>
+
+<style lang="scss">
+  .lang-switcher {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.3rem 0.6rem;
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+
+    &:hover {
+      background: var(--element);
+      border-color: var(--accent);
+    }
+  }
+</style>
