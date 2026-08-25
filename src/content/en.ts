@@ -31,7 +31,7 @@ const en: SiteContent = {
       lines: [
         {
           cmd: "ls ~/stack",
-          output: ["python/  rust/  typescript/  fastapi/  postgres/"],
+          output: ["python/  rust/  typescript/  fastapi/  nextjs/  postgres/"],
         },
         {
           cmd: "cat experience.log",
@@ -70,6 +70,7 @@ const en: SiteContent = {
         period: "Dec 2021 — Aug 2023",
         summary:
           "Two core products of the company: a CRM for marketplace sellers and a WMS for warehouse logistics and fulfillment.",
+        preview: "/preview-wms.png",
         points: [
           "CRM for Wildberries and Ozon sellers: product, order, and inventory management; marketplace data sync; automation of routine workflows.",
           "WMS: goods tracking, stock movements, order picking, and real-time operation.",
@@ -120,6 +121,7 @@ const en: SiteContent = {
           "PyQt6",
           "aiogram",
         ],
+        preview: "/preview-jcrypto.png",
       },
     ],
   },
