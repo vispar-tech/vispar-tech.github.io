@@ -35,6 +35,8 @@ export interface ExperienceItem {
   summary: string;
   points: string[];
   stack: string[];
+  /** optional preview image of the product (public/ path or URL) */
+  preview?: string;
 }
 
 export interface ProjectItem {

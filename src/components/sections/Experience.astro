@@ -31,6 +31,16 @@ const { experience } = content;
           <ul class="job__stack">
             {job.stack.map((tech) => <li>{tech}</li>)}
           </ul>
+          {job.preview && (
+            <div class="job__preview">
+              <div class="job__preview-bar" aria-hidden="true">
+                <span class="job__preview-dot"></span>
+                <span class="job__preview-dot"></span>
+                <span class="job__preview-dot"></span>
+              </div>
+              <img src={job.preview} alt={`${job.company} — preview`} loading="lazy" width="1280" height="800" />
+            </div>
+          )}
         </li>
       ))}
     </ol>
@@ -126,6 +136,35 @@ const { experience } = content;
         border-radius: var(--radius-sm);
         padding: 0.2rem 0.55rem;
       }
+    }
+
+    &__preview {
+      margin-top: 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+
+    &__preview-bar {
+      display: flex;
+      gap: 5px;
+      padding: 8px 10px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+    }
+
+    &__preview-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--neutral-700);
     }
   }
 </style>
