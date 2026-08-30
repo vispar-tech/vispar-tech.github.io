@@ -132,13 +132,6 @@ const en: SiteContent = {
     viewAllUrl: "https://github.com/vispar-tech?tab=repositories",
     items: [
       {
-        name: "klines-streamer",
-        url: "https://github.com/vispar-tech/klines-streamer",
-        description:
-          "A Python service that aggregates trades from Bybit's WebSocket API into candlestick (kline) data at configurable intervals.",
-        language: "Python",
-      },
-      {
         name: "aiotrade",
         url: "https://github.com/vispar-tech/aiotrade",
         description:
@@ -153,11 +146,18 @@ const en: SiteContent = {
         language: "Rust",
       },
       {
-        name: "icon-kitchen-gitlab-sync",
-        url: "https://github.com/vispar-tech/icon-kitchen-gitlab-sync",
+        name: "klines-streamer",
+        url: "https://github.com/vispar-tech/klines-streamer",
         description:
-          "Generates icon.kitchen URLs, downloads icons, and syncs them as GitLab project avatars.",
+          "A Python service that streams market data from crypto exchange WebSocket APIs and aggregates trades into candlestick (kline) data at configurable intervals.",
         language: "Python",
+      },
+      {
+        name: "klines-streamer-rs",
+        url: "https://github.com/vispar-tech/klines-streamer-rs",
+        description:
+          "A Rust service that aggregates closed candles (klines) from multiple exchange trade streams: data normalization and publishing to Redis, RabbitMQ, and WebSocket.",
+        language: "Rust",
       },
       {
         name: "openrot",

@@ -132,13 +132,6 @@ const ru: SiteContent = {
     viewAllUrl: "https://github.com/vispar-tech?tab=repositories",
     items: [
       {
-        name: "klines-streamer",
-        url: "https://github.com/vispar-tech/klines-streamer",
-        description:
-          "Python-сервис агрегации сделок из WebSocket API Bybit в свечи (klines) на настраиваемых интервалах.",
-        language: "Python",
-      },
-      {
         name: "aiotrade",
         url: "https://github.com/vispar-tech/aiotrade",
         description:
@@ -153,17 +146,24 @@ const ru: SiteContent = {
         language: "Rust",
       },
       {
-        name: "icon-kitchen-gitlab-sync",
-        url: "https://github.com/vispar-tech/icon-kitchen-gitlab-sync",
+        name: "klines-streamer",
+        url: "https://github.com/vispar-tech/klines-streamer",
         description:
-          "Генерация URL icon.kitchen, скачивание иконок и синхронизация их как аватаров проектов GitLab.",
+          "Python-сервис стриминга рыночных данных из WebSocket API криптобирж с агрегацией сделок в свечи (klines) на настраиваемых интервалах.",
         language: "Python",
+      },
+      {
+        name: "klines-streamer-rs",
+        url: "https://github.com/vispar-tech/klines-streamer-rs",
+        description:
+          "Rust-сервис агрегации закрытых свечей (klines) из потоков сделок нескольких криптобирж: нормализация данных и публикация в Redis, RabbitMQ и WebSocket.",
+        language: "Rust",
       },
       {
         name: "openrot",
         url: "https://github.com/vispar-tech/openrot",
         description:
-          "Локальный ротатор прокси: один конфиг задаёт профили и узлы, трафик идёт от Cloudflare WARP вниз по цепочке до первого живого узла, при падении — авто-ротация.",
+          "Локальный ротатор прокси: один конфиг задаёт профили и узлы, трафик идёт от Cloudflare WARP вниз по цепочке до первого живого узла, при падении выполняется авто-ротация.",
         language: "Python",
       },
       {
