@@ -37,7 +37,7 @@ const en: SiteContent = {
           cmd: "cat experience.log",
           output: [
             "justdo — crm + wms for wb & ozon (2021—2023)",
-            "j-crypto — algo trading platform (2023—2026)",
+            "j-crypto — algo trading platform (2023—present)",
           ],
         },
         {
@@ -52,7 +52,7 @@ const en: SiteContent = {
     paragraphs: [
       "Fullstack developer with over 4 years of commercial experience. I focus on backend-oriented fullstack work, architecture design, and high-load systems.",
       "I work with distributed systems, real-time data processing, external API integrations, and asynchronous architecture. My core experience covers a suite of services for marketplaces and warehouse logistics (CRM + WMS) and an algorithmic crypto trading platform.",
-      "I also build and maintain my own projects and utilities on GitHub: automation tools and crypto exchange libraries.",
+      "I also build my own open-source projects: crypto exchange client libraries published on PyPI and crates.io, plus automation tooling.",
     ],
     stats: [
       { value: "4+", label: "years of commercial development" },
@@ -98,13 +98,13 @@ const en: SiteContent = {
         company: "Sagirov LLC",
         link: "https://j-crypto.ru",
         role: "Fullstack / Backend Developer",
-        period: "Aug 2023 — Jun 2026",
+        period: "Aug 2023 — Present",
         summary:
           "Algorithmic crypto trading platform: trading bots, real-time market data, strategy backtesting, exchange connectivity via API.",
         points: [
           "Built the backend of the trading platform: streaming data processing and trading logic.",
           "Developed the strategy execution system and exchange integrations.",
-          "Created Python trading engines and a high-performance Rust module for real-time data.",
+          "Trading engines: a Python backend plus high-performance Rust modules for real-time data — market data aggregation, order execution, and a candlestick service publishing to Redis, RabbitMQ, and WebSocket.",
           "Shipped a PyQt6 desktop app for market analysis and strategy backtesting.",
           "Built a Telegram bot for managing trading accounts and strategies.",
         ],
@@ -142,14 +142,14 @@ const en: SiteContent = {
         name: "aiotrade",
         url: "https://github.com/vispar-tech/aiotrade",
         description:
-          "High-performance async exchange API clients for Python with intelligent session and cache management.",
+          "Async exchange API clients for 7 crypto exchanges in Python: session management, TTL cache, and 244+ API methods. Published on PyPI.",
         language: "Python",
       },
       {
         name: "trade-sdk",
         url: "https://github.com/vispar-tech/trade-sdk",
         description:
-          "Async trading API client in Rust for BingX and Bybit exchanges with session and cache management.",
+          "Async trading API client in Rust for BingX and Bybit: connection pooling, TTL cache, and 48+ methods. Published on crates.io.",
         language: "Rust",
       },
       {
@@ -159,17 +159,31 @@ const en: SiteContent = {
           "Generates icon.kitchen URLs, downloads icons, and syncs them as GitLab project avatars.",
         language: "Python",
       },
+      {
+        name: "openrot",
+        url: "https://github.com/vispar-tech/openrot",
+        description:
+          "Local proxy rotator: one config defines profiles and nodes; traffic flows from Cloudflare WARP down the chain to the first alive node, auto-rotating when one dies.",
+        language: "Python",
+      },
+      {
+        name: "rtwi",
+        url: "https://github.com/vispar-tech/rtwi",
+        description:
+          "Automatic sign-in to the Rostelecom commercial Wi-Fi captive portal (auth.wifi.rt.ru), with MAC roll when the portal blocks the device.",
+        language: "Python",
+      },
     ],
   },
   stack: {
     heading: "Stack",
     groups: [
       { name: "Languages", items: ["Python", "Rust", "TypeScript", "JavaScript"] },
-      { name: "Backend", items: ["FastAPI", "Django", "Django REST Framework", "REST API", "WebSocket"] },
+      { name: "Backend", items: ["FastAPI", "Django", "Django REST Framework", "REST API", "WebSocket", "asyncio"] },
       { name: "Frontend", items: ["React", "Next.js", "PyQt6"] },
       { name: "Async & queues", items: ["Celery", "Taskiq", "RabbitMQ"] },
-      { name: "Data", items: ["PostgreSQL", "Redis"] },
-      { name: "Infrastructure", items: ["Docker", "event-driven architecture"] },
+      { name: "Data", items: ["PostgreSQL", "Redis", "SQL", "SQLAlchemy", "pandas"] },
+      { name: "Infrastructure", items: ["Docker", "Linux", "Nginx", "CI/CD", "event-driven architecture"] },
     ],
   },
   contacts: {

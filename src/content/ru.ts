@@ -37,7 +37,7 @@ const ru: SiteContent = {
           cmd: "cat experience.log",
           output: [
             "justdo — crm + wms для wb и ozon (2021—2023)",
-            "j-crypto — платформа алготрейдинга (2023—2026)",
+            "j-crypto — платформа алготрейдинга (2023—наст.)",
           ],
         },
         {
@@ -52,7 +52,7 @@ const ru: SiteContent = {
     paragraphs: [
       "Fullstack-разработчик с опытом коммерческой разработки более 4 лет. Специализируюсь на backend-ориентированной fullstack-разработке, проектировании архитектуры и высоконагруженных системах.",
       "Работаю с распределёнными системами, real-time обработкой данных, интеграциями с внешними API и асинхронной архитектурой. Основной опыт — комплекс сервисов для маркетплейсов и складской логистики (CRM + WMS) и платформа алгоритмической торговли криптовалютами.",
-      "Развиваю собственные проекты и утилиты на GitHub: инструменты для автоматизации и работы с криптобиржами.",
+      "Развиваю собственные open-source-проекты: клиентские библиотеки криптобирж, опубликованные на PyPI и crates.io, и инструменты автоматизации.",
     ],
     stats: [
       { value: "4+", label: "лет коммерческой разработки" },
@@ -98,13 +98,13 @@ const ru: SiteContent = {
         company: "ООО «Сагиров»",
         link: "https://j-crypto.ru",
         role: "Fullstack / Backend Developer",
-        period: "август 2023 — июнь 2026",
+        period: "август 2023 — настоящее время",
         summary:
           "Платформа алгоритмической торговли криптовалютами: торговые боты, рыночные данные в реальном времени, тестирование стратегий, подключение к биржам через API.",
         points: [
           "Разработка backend торговой платформы: обработка потоковых данных и реализация торговой логики.",
           "Система исполнения стратегий и интеграции с биржами.",
-          "Торговые движки на Python и высокопроизводительный модуль на Rust для real-time данных.",
+          "Торговые движки: backend на Python и высокопроизводительные Rust-модули — агрегация рыночных данных, постановщик ордеров и сервис свечей с публикацией в Redis, RabbitMQ и WebSocket.",
           "Десктопное приложение на PyQt6 для анализа рынка и тестирования стратегий.",
           "Telegram-бот для управления торговыми аккаунтами и стратегиями.",
         ],
@@ -142,14 +142,14 @@ const ru: SiteContent = {
         name: "aiotrade",
         url: "https://github.com/vispar-tech/aiotrade",
         description:
-          "Высокопроизводительные асинхронные клиенты API бирж для Python с управлением сессиями и кэшем.",
+          "Асинхронные клиенты API 7 криптобирж для Python: управление сессиями, TTL-кэш, 244+ метода API. Опубликован на PyPI.",
         language: "Python",
       },
       {
         name: "trade-sdk",
         url: "https://github.com/vispar-tech/trade-sdk",
         description:
-          "Асинхронный клиент торговых API на Rust для бирж BingX и Bybit с управлением сессиями и кэшем.",
+          "Асинхронный клиент торговых API на Rust для BingX и Bybit: пул соединений, TTL-кэш, 48+ методов. Опубликован на crates.io.",
         language: "Rust",
       },
       {
@@ -159,17 +159,31 @@ const ru: SiteContent = {
           "Генерация URL icon.kitchen, скачивание иконок и синхронизация их как аватаров проектов GitLab.",
         language: "Python",
       },
+      {
+        name: "openrot",
+        url: "https://github.com/vispar-tech/openrot",
+        description:
+          "Локальный ротатор прокси: один конфиг задаёт профили и узлы, трафик идёт от Cloudflare WARP вниз по цепочке до первого живого узла, при падении — авто-ротация.",
+        language: "Python",
+      },
+      {
+        name: "rtwi",
+        url: "https://github.com/vispar-tech/rtwi",
+        description:
+          "Авторизация на портале коммерческого Wi-Fi Ростелекома (auth.wifi.rt.ru): авто-вход и смена MAC при блокировке лимитов.",
+        language: "Python",
+      },
     ],
   },
   stack: {
     heading: "Стек",
     groups: [
       { name: "Языки", items: ["Python", "Rust", "TypeScript", "JavaScript"] },
-      { name: "Backend", items: ["FastAPI", "Django", "Django REST Framework", "REST API", "WebSocket"] },
+      { name: "Backend", items: ["FastAPI", "Django", "Django REST Framework", "REST API", "WebSocket", "asyncio"] },
       { name: "Frontend", items: ["React", "Next.js", "PyQt6"] },
       { name: "Асинхронность и очереди", items: ["Celery", "Taskiq", "RabbitMQ"] },
-      { name: "Данные", items: ["PostgreSQL", "Redis"] },
-      { name: "Инфраструктура", items: ["Docker", "event-driven architecture"] },
+      { name: "Данные", items: ["PostgreSQL", "Redis", "SQL", "SQLAlchemy", "pandas"] },
+      { name: "Инфраструктура", items: ["Docker", "Linux", "Nginx", "CI/CD", "event-driven architecture"] },
     ],
   },
   contacts: {
