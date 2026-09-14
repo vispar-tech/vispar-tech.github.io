@@ -52,7 +52,7 @@
    icon-kitchen-gitlab-sync) со звёздами и языком; ссылка на все репозитории.
 5. **Stack** — группы: языки, backend, frontend, асинхронность/очереди, данные, инфраструктура.
 6. **Contacts** — Telegram `@vispar_work`, GitHub `vispar-tech`,
-   email `layred.dota2@mail.ru`; подвал с локацией.
+   email `vispar@vk.com`; подвал с локацией.
 
 ## Технические правила
 
@@ -67,4 +67,4 @@
 ## Контактные данные владельца
 
 Telegram `https://t.me/vispar_work` · GitHub `https://github.com/vispar-tech` ·
-email `layred.dota2@mail.ru` · аватар `https://avatars.githubusercontent.com/u/85240536`
+email `vispar@vk.com` · аватар `https://avatars.githubusercontent.com/u/85240536`

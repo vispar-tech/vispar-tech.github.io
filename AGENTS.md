@@ -85,5 +85,5 @@ docs/
 
 ## Контактные данные владельца (не менять без прямого указания)
 
-Telegram `@vispar_work` · GitHub `vispar-tech` · email `layred.dota2@mail.ru`
+Telegram `@vispar_work` · GitHub `vispar-tech` · email `vispar@vk.com`
 Аватар: `https://avatars.githubusercontent.com/u/85240536`
