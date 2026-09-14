@@ -5,7 +5,7 @@ const en: SiteContent = {
   meta: {
     title: "Daniil Pavlovich — Fullstack / Backend Developer",
     description:
-      "Fullstack developer with 4+ years of commercial experience: Python, FastAPI, Rust, Next.js. Marketplace CRM and WMS systems, algorithmic trading platform. Saint Petersburg.",
+      "Middle fullstack developer with 4+ years of commercial experience: Python, FastAPI, Rust, Next.js. Fulfillment WMS (Wildberries, Ozon, Chestny Znak), algorithmic trading platform. Saint Petersburg.",
   },
   nav: {
     about: "About",
@@ -31,13 +31,14 @@ const en: SiteContent = {
       lines: [
         {
           cmd: "ls ~/stack",
-          output: ["python/  rust/  typescript/  fastapi/  nextjs/  postgres/"],
+          output: ["python/  rust/  typescript/  vue/  fastapi/  nextjs/  postgres/  redis/"],
         },
         {
           cmd: "cat experience.log",
           output: [
-            "justdo — crm + wms for wb & ozon (2021—2023)",
-            "j-crypto — algo trading platform (2023—present)",
+            "ip sagirov — marketplace service (2022—2023)",
+            "j-crypto — algo trading platform (2023—2024)",
+            "justdo — fulfillment wms (2024—present)",
           ],
         },
         {
@@ -50,9 +51,9 @@ const en: SiteContent = {
   about: {
     heading: "About me",
     paragraphs: [
-      "Fullstack developer with over 4 years of commercial experience. I focus on backend-oriented fullstack work, architecture design, and high-load systems.",
-      "I work with distributed systems, real-time data processing, external API integrations, and asynchronous architecture. My core experience covers a suite of services for marketplaces and warehouse logistics (CRM + WMS) and an algorithmic crypto trading platform.",
-      "I also build my own open-source projects: crypto exchange client libraries published on PyPI and crates.io, plus automation tooling.",
+      "Middle fullstack developer with over 4 years of commercial experience. I focus on backend-oriented fullstack work, architecture design, and high-load systems.",
+      "My core experience is a fulfillment WMS: marketplace integrations with Wildberries and Ozon, FBO/FBS order picking, Chestny Znak. Plus a live algorithmic crypto trading platform. I take full ownership — from architecture to production.",
+      "I work with AI agents as a development loop (MCP, AGENTS contracts, skills) and build autonomous automation services — like a desktop label-printing service for the WMS. I maintain my own open-source projects and speak at internal company meetups.",
     ],
     stats: [
       { value: "4+", label: "years of commercial development" },
@@ -65,17 +66,18 @@ const en: SiteContent = {
     items: [
       {
         company: "JUSTDO LLC",
-        link: "https://justdo-service.ru",
-        role: "Fullstack / Backend Developer",
-        period: "Dec 2021 — Aug 2023",
+        link: "https://wms.justdo-service.ru",
+        role: "Lead Fullstack Developer",
+        period: "Aug 2024 — Present",
         summary:
-          "Two core products of the company: a CRM for marketplace sellers and a WMS for warehouse logistics and fulfillment.",
+          "A full-fledged WMS for a fulfillment center: receiving, inventory, FBO/FBS order picking across marketplaces, shipping. I own the project end to end — combining developer, project manager, QA, and devops roles.",
         preview: "/preview-wms.png",
         points: [
-          "CRM for Wildberries and Ozon sellers: product, order, and inventory management; marketplace data sync; automation of routine workflows.",
-          "WMS: goods tracking, stock movements, order picking, and real-time operation.",
-          "Backend and frontend plus external API integrations: business logic, data synchronization, background jobs via queues.",
-          "Designed event-driven architecture and realtime updates; built a warehouse operator interface with live data.",
+          "Fulfillment WMS: receiving, inventory, stock movements, FBO/FBS order picking for Wildberries and Ozon, shipping.",
+          "Wildberries and Ozon API integrations: product, stock, order, and shipment sync; Chestny Znak for labeled goods.",
+          "Event-driven architecture with realtime updates over WebSocket for warehouse operators; operator UI built with React/Next.js.",
+          "Marketplace data pipelines on Scrapy, browser automation (Camoufox, Selenium, Playwright) for monitoring external services.",
+          "Internal utilities and admin tools for staff, some built with Vue.js; a desktop label-printing service (PySide6).",
         ],
         stack: [
           "Python",
@@ -84,7 +86,11 @@ const en: SiteContent = {
           "DRF",
           "Next.js",
           "React",
+          "Vue.js",
           "TypeScript",
+          "Redux Toolkit",
+          "RTK Query",
+          "Mantine",
           "Celery",
           "Taskiq",
           "RabbitMQ",
@@ -92,27 +98,37 @@ const en: SiteContent = {
           "Redis",
           "Docker",
           "WebSocket",
+          "Scrapy",
+          "Playwright",
+          "Selenium",
+          "Camoufox",
+          "YouTrack",
         ],
       },
       {
         company: "Sagirov LLC",
         link: "https://j-crypto.ru",
-        role: "Fullstack / Backend Developer",
-        period: "Aug 2023 — Present",
+        role: "Backend Developer",
+        period: "Mar 2023 — Jun 2024",
         summary:
-          "Algorithmic crypto trading platform: trading bots, real-time market data, strategy backtesting, exchange connectivity via API.",
+          "A live algorithmic crypto trading platform: trading bots, real-time market data, strategy backtesting, exchange connectivity via API. Joined as a junior and grew to middle.",
         points: [
-          "Built the backend of the trading platform: streaming data processing and trading logic.",
-          "Developed the strategy execution system and exchange integrations.",
-          "Trading engines: a Python backend plus high-performance Rust modules for real-time data — market data aggregation, order execution, and a candlestick service publishing to Redis, RabbitMQ, and WebSocket.",
-          "Shipped a PyQt6 desktop app for market analysis and strategy backtesting.",
-          "Built a Telegram bot for managing trading accounts and strategies.",
+          "Built the trading platform backend on FastAPI: streaming data processing and trading logic; realtime delivery over WebSocket.",
+          "Exchange data streams processed with protobuf + gRPC for market data transfer.",
+          "Backtester: historical data processing on pandas, strategy model training, parameter tuning; its backend on Node.js (Express → Nest.js).",
+          "A high-performance Rust module for realtime data.",
+          "A PyQt6 desktop app for market analysis, an aiogram Telegram bot, error monitoring with Sentry.",
         ],
         stack: [
           "Python",
           "Rust",
+          "Node.js",
+          "Express",
+          "Nest.js",
           "FastAPI",
           "WebSocket",
+          "gRPC",
+          "protobuf",
           "Celery",
           "RabbitMQ",
           "PostgreSQL",
@@ -120,8 +136,34 @@ const en: SiteContent = {
           "Docker",
           "PyQt6",
           "aiogram",
+          "pandas",
+          "Sentry",
         ],
         preview: "/preview-jcrypto.png",
+      },
+      {
+        company: "IP Sagirov Aleksey Nikolaevich",
+        role: "Junior Developer",
+        period: "Feb 2022 — Mar 2023",
+        summary:
+          "My first commercial project: a marketplace service (e-commerce) — FBS/FBO stock and order management, data sync, and a Telegram bot.",
+        points: [
+          "Marketplace service for FBS/FBO stock and order management.",
+          "Data sync between marketplaces and external sources.",
+          "Telegram bot for notifications and operations management.",
+          "Automation of internal routine operations.",
+        ],
+        stack: [
+          "Python",
+          "FastAPI",
+          "Django",
+          "PostgreSQL",
+          "Redis",
+          "Docker",
+          "Scrapy",
+          "Telegram Bot API",
+          "WebSocket",
+        ],
       },
     ],
   },
@@ -135,42 +177,28 @@ const en: SiteContent = {
         name: "aiotrade",
         url: "https://github.com/vispar-tech/aiotrade",
         description:
-          "Async exchange API clients for 7 crypto exchanges in Python: session management, TTL cache, and 244+ API methods. Published on PyPI.",
+          "High-performance async API clients for 7 crypto exchanges in Python (BingX, Bybit, OKX, Bitget, Binance, KuCoin, Gate): smart session management, TTL cache, and 244+ API methods. Published on PyPI.",
         language: "Python",
-      },
-      {
-        name: "trade-sdk",
-        url: "https://github.com/vispar-tech/trade-sdk",
-        description:
-          "Async trading API client in Rust for BingX and Bybit: connection pooling, TTL cache, and 48+ methods. Published on crates.io.",
-        language: "Rust",
       },
       {
         name: "klines-streamer",
         url: "https://github.com/vispar-tech/klines-streamer",
         description:
-          "A Python service that streams market data from crypto exchange WebSocket APIs and aggregates trades into candlestick (kline) data at configurable intervals.",
+          "A multi-exchange Python service streaming market data over WebSocket: trade aggregation into candlesticks (klines) at configurable intervals, multi-container architecture, pluggable consumers (Redis, WebSocket, console, file).",
         language: "Python",
-      },
-      {
-        name: "klines-streamer-rs",
-        url: "https://github.com/vispar-tech/klines-streamer-rs",
-        description:
-          "A Rust service that aggregates closed candles (klines) from multiple exchange trade streams: data normalization and publishing to Redis, RabbitMQ, and WebSocket.",
-        language: "Rust",
       },
       {
         name: "openrot",
         url: "https://github.com/vispar-tech/openrot",
         description:
-          "Local proxy rotator: one config defines profiles and nodes; traffic flows from Cloudflare WARP down the chain to the first alive node, auto-rotating when one dies.",
+          "Local proxy rotator: one config defines profiles and nodes; traffic flows from Cloudflare WARP down the chain to the first alive node, auto-rotating when one dies. Loopback bridge for OpenAI-compatible clients, test coverage >85%.",
         language: "Python",
       },
       {
         name: "rtwi",
         url: "https://github.com/vispar-tech/rtwi",
         description:
-          "Automatic sign-in to the Rostelecom commercial Wi-Fi captive portal (auth.wifi.rt.ru), with MAC roll when the portal blocks the device.",
+          "CLI for automatic sign-in to the Rostelecom commercial Wi-Fi captive portal (auth.wifi.rt.ru): SMS/callback login and automatic MAC roll to lift limits. Ships a standalone macOS arm64 binary.",
         language: "Python",
       },
     ],
@@ -178,12 +206,14 @@ const en: SiteContent = {
   stack: {
     heading: "Stack",
     groups: [
-      { name: "Languages", items: ["Python", "Rust", "TypeScript", "JavaScript"] },
-      { name: "Backend", items: ["FastAPI", "Django", "Django REST Framework", "REST API", "WebSocket", "asyncio"] },
-      { name: "Frontend", items: ["React", "Next.js", "PyQt6"] },
+      { name: "Languages", items: ["Python", "Rust", "TypeScript", "JavaScript", "SQL"] },
+      { name: "Backend", items: ["FastAPI", "Django", "Django REST Framework", "REST API", "WebSocket", "gRPC", "protobuf", "Node.js (Express, Nest.js)"] },
+      { name: "Frontend", items: ["React", "Next.js", "Vue.js", "Redux Toolkit", "RTK Query", "Mantine", "PySide6", "PyQt6"] },
       { name: "Async & queues", items: ["Celery", "Taskiq", "RabbitMQ"] },
-      { name: "Data", items: ["PostgreSQL", "Redis", "SQL", "SQLAlchemy", "pandas"] },
-      { name: "Infrastructure", items: ["Docker", "Linux", "Nginx", "CI/CD", "event-driven architecture"] },
+      { name: "Data", items: ["PostgreSQL", "Redis", "SQLAlchemy", "pandas"] },
+      { name: "Automation & scraping", items: ["Scrapy", "Playwright", "Selenium", "Camoufox"] },
+      { name: "Infrastructure", items: ["Docker", "Linux", "Nginx", "CI/CD", "Sentry", "YouTrack"] },
+      { name: "AI agents", items: ["MCP", "AGENTS contracts", "subagents & skills"] },
     ],
   },
   contacts: {
@@ -193,7 +223,7 @@ const en: SiteContent = {
     telegramLabel: "@vispar_work",
     githubUrl: "https://github.com/vispar-tech",
     githubLabel: "github.com/vispar-tech",
-    email: "layred.dota2@mail.ru",
+    email: "vispar@vk.com",
     copyLabel: "[copy]",
     copiedLabel: "[copied ✓]",
     footerNote: "Saint Petersburg · UTC+3",
